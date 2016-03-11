@@ -1,0 +1,30 @@
+<form name="formNewEntry" class="offset1 span9" ng-submit="submitEntry()">
+  <fieldset>
+    <legend>New guestbook entry</legend>
+    <label>Your mail address (not shown, but available via FireBug)</label>
+    <input type="email" class="span4" ng-model="newentry.customer">
+    <label>Your subject line (required)</label>
+    <input type="number" step="0.01" class="span9" ng-model="newentry.amountDue" required>
+  </fieldset>
+  <label>Submit your entry here</label>
+  <button class="submit" ng-disabled="formNewEntry.$invalid">Submit</button>
+</form>
+
+<table class="table table-striped">
+  <caption>
+    Results
+  </caption>
+  <!-- <thead>
+        <tr><th>UTC</th><th>Subject</th><th>By</th></tr>
+        </thead> -->
+  <tbody>
+    <tr ng-repeat="row in db.rows">
+      <td class="span2">{{ row.id }}</td>
+      <td class="span2">{{ row.value.customer }}</td>
+      <td class="span6">{{ row.value.type }}</td>
+      <td>
+        {{row.value.amountDue}}
+      </td>
+    </tr>
+  </tbody>
+</table>
